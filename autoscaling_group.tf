@@ -12,7 +12,7 @@ locals {
 
 resource "aws_launch_configuration" "launch_configuration" {
   name_prefix          = local.instance_name
-  image_id             = aws_ami_copy.amazon-linux-2-encrypted.id
+  image_id             = data.aws_ami.amazon-linux-2.id
   instance_type        = var.instance_type
   security_groups      = [aws_security_group.sg_bastion.id]
   iam_instance_profile = module.instance_profile_role.this_iam_role_name
